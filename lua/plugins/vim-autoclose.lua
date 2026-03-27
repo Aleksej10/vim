@@ -1,0 +1,5 @@
+return {
+  {
+    "townk/vim-autoclose",
+  }
+}

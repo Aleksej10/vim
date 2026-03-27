@@ -1,0 +1,5 @@
+return {
+  {
+    "nikvdp/ejs-syntax"
+  }
+}
