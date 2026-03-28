@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-o.listchars = "tab:>~"
+o.listchars = "tab:->"
 o.list = true
 
 -- set guifont=hive:h12

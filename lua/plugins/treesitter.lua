@@ -1,61 +1,60 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     lazy = false,
     build = ':TSUpdate',
-    init = function()
+    config = function()
       local parser_path = vim.fn.stdpath('config') .. '/treesitter'
 
       if vim.fn.isdirectory(parser_path) == 0 then
         vim.fn.mkdir(parser_path, "p")
       end
 
-      vim.opt.runtimepath:append(parser_path)
+      vim.opt.runtimepath:prepend(parser_path)
 
       local languages = {
-          'bash',
-          'go',
-          'gomod',
-          'gosum',
-          'gotmpl',
-          'haskell',
-          'c',
-          'cpp',
-          'cmake',
-          'csv',
-          'make',
-          'dockerfile',
-          'git_config',
-          'gitignore',
-          'lua',
-          'latex',
-          'python',
-          'ruby',
-          'rust',
-          'typescript',
-          'javascript',
-          'nginx',
-          'html',
-          'css',
-          'scss',
-          'zig',
-          'sql',
-          'json',
-          'jsx',
-          'tsx',
-          'toml',
-          'vim',
-          'vimdoc',
-          'svelte',
-          'yaml',
-          'zsh',
-        },
-
-      require('nvim-treesitter').install(languages)
+        'bash',
+        'go',
+        'gomod',
+        'gosum',
+        'gotmpl',
+        'haskell',
+        'c',
+        'cpp',
+        'cmake',
+        'csv',
+        'make',
+        'dockerfile',
+        'git_config',
+        'gitignore',
+        'lua',
+        'latex',
+        'python',
+        'ruby',
+        'rust',
+        'typescript',
+        'javascript',
+        'nginx',
+        'html',
+        'css',
+        'scss',
+        'zig',
+        'sql',
+        'xml',
+        'json',
+        'jsx',
+        'tsx',
+        'toml',
+        'vim',
+        'vimdoc',
+        'svelte',
+        'yaml',
+        'zsh',
+      },
 
       require('nvim-treesitter').setup({
         install_dir = parser_path,
-        ensure_installed = languages,
         sync_install = true,
         ignore_install = { },
         highlight = {
@@ -68,7 +67,12 @@ return {
         },
       })
 
-      local excluded = { 'nimbleapi-explorer' }
+      require('nvim-treesitter').install(languages):wait(300000)
+
+      local excluded = { 
+        'nimbleapi-explorer',
+        'NvimTree',
+      }
 
       vim.api.nvim_create_autocmd('FileType', {
         pattern = '*',
@@ -76,6 +80,9 @@ return {
           if vim.tbl_contains(excluded, vim.bo.filetype) then
             return
           end
+          vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.wo[0][0].foldmethod = 'expr'
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
           pcall(vim.treesitter.start)
         end,
       })

@@ -6,9 +6,8 @@ return {
     ---@type ibl.config
     opts = {},
     init = function()
-      vim.opt.list = true
-      vim.opt.listchars:append("space:⋅")
-      vim.opt.listchars:append("eol:↴")
+      -- vim.opt.listchars:append("space:⋅")
+      -- vim.opt.listchars:append("eol:↴")
       vim.keymap.set("n", "<leader>i", "<cmd>IBLToggle<cr>", { silent = true })
     end,
     config = function()
