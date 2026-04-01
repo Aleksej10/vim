@@ -5,6 +5,7 @@ return {
     ---@module "ibl"
     ---@type ibl.config
     opts = {},
+    cond = not vim.g.vscode,
     init = function()
       -- vim.opt.listchars:append("space:⋅")
       -- vim.opt.listchars:append("eol:↴")

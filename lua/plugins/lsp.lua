@@ -110,7 +110,8 @@ return {
 
 
       local servers = { 
-        'basedpyright',
+        -- 'basedpyright',
+        'ty',
         'rust_analyzer', 
         'bundle_solargraph',
         'gopls', 
@@ -118,6 +119,7 @@ return {
 
         'ts_ls', 
         'lua_ls',
+        'somesass_ls',
 
         'oxlint',
         -- 'vscode_js',

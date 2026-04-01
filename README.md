@@ -14,3 +14,6 @@
 - lua-language-server
 - oxlint
 - vscode-langservers-extracted
+- some-sass-language-server
+- ty
+
