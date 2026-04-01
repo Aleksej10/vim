@@ -16,17 +16,9 @@ return {
         update_in_insert = false
       })
 
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-        vim.lsp.handlers.signature_help, {
-          border = "rounded",
-          focusable = false, -- keeps you from accidentally jumping into the floating window
-        }
-      )
-
       local function toggle_diagnostics()
         vim.diagnostic.enable(not vim.diagnostic.is_enabled())
       end
-
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
@@ -57,7 +49,7 @@ return {
           map('gS', telescope.lsp_dynamic_workspace_symbols) -- Find symbol in entire project
           -- map('gS', vim.lsp.buf.workspace_symbol)         -- Find symbol in entire project
 
-          -- map('<C-k>', vim.lsp.buf.signature_help) -- Signature help -- this should auto-open
+          -- map('<C-k>', vim.lsp.buf.signature_help) -- Signature help -- this should auto-open but is ound to <C-> in coc
 
           map('gI', telescope.lsp_incoming_calls) -- List what's calling the symbol
           map('gO', telescope.lsp_outgoing_calls) -- List what the function is calling
@@ -103,9 +95,6 @@ return {
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
         root_markers = { '.git' },
         -- root_dir = require('lspconfig.util').root_pattern('.git'),
-        on_attach = function(client, bufnr)
-          client.server_capabilities.semanticTokensProvider = true
-        end,
       })
 
 
