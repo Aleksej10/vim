@@ -15,10 +15,24 @@ o.viminfo = ''
 o.mouse = "a" -- enable mouse in all modes
 o.clipboard = "unnamedplus" -- use system clipboard
 o.number = true
+o.relativenumber = false
 o.hidden = true
-o.swapfile = false
-o.backup = false
-o.writebackup = false
+
+opt.backup = false
+opt.writebackup = false
+opt.swapfile = false
+opt.undofile = true
+
+opt.updatetime = 200
+opt.ttimeoutlen = 0
+
+opt.redrawtime = 10000
+opt.maxmempattern = 20000
+
+opt.iskeyword:append("-") -- Treat dash as part of word
+opt.backspace = "indent,eol,start"
+opt.smoothscroll = true
+
 o.showcmd = true
 o.wrap = false
 o.cursorline = true
@@ -27,9 +41,10 @@ o.ignorecase = true
 o.smartcase = true
 o.showmatch = true
 o.visualbell = true
-o.sidescrolloff = 7
-o.scrolloff = 3
+o.sidescrolloff = 10
+o.scrolloff = 10
 opt.shortmess:append("c") -- supress completition menu messages
+opt.virtualedit = "block"
 o.wildmode = "longest:full,full"
 o.showmode = false
 o.synmaxcol = 250
@@ -52,6 +67,7 @@ o.list = true
 -- Splits open at the bottom and right
 o.splitbelow = true
 o.splitright = true
+o.splitkeep = "screen"
 
 -- Shortcutting split navigation
 map({ "n", "v" }, "<C-h>", "<C-w>h")
@@ -154,6 +170,20 @@ for i = 1, 9 do
 end
 
 mod_map("0", ":tablast<CR>")
+
+vim.filetype.add({
+  extension = {
+    env = "dotenv",
+  },
+  filename = {
+    [".env"] = "dotenv",
+    ["env"] = "dotenv",
+  },
+  pattern = {
+    ["[jt]sconfig.*.json"] = "jsonc",
+    ["%.env%.[%w_.-]+"] = "dotenv",
+  },
+})
 
 -- sane tab widths
 vim.api.nvim_create_autocmd("FileType", {
