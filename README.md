@@ -1,3 +1,15 @@
+# Dependencies
+
+- neovim v0.12
+- tree-sitter(-cli) v0.26
+
+- mercurial
+- cURL
+- gPRCurl
+- websocat
+- openssl
+- NPM
+
 # Post install
 
 - Run :TSInstall d2
