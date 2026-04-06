@@ -3,6 +3,7 @@
 - neovim v0.12
 - tree-sitter(-cli) v0.26
 
+- go (for hexokaise)
 - mercurial
 - cURL
 - gPRCurl
