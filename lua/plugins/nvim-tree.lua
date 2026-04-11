@@ -13,6 +13,10 @@ return {
       vim.opt.termguicolors = true
 
       local function open_nvim_tree(data)
+        if vim.env.KITTY_SCROLLBACK_NVIM == 'true' then
+          return
+        end
+
         local real_file = vim.fn.filereadable(data.file) == 1
         local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
 
