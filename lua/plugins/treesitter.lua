@@ -20,6 +20,7 @@ return {
         "cpp",
         "css",
         "csv",
+        "d2",
         "dockerfile",
         "git_config",
         "gitignore",

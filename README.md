@@ -10,6 +10,7 @@
 - websocat
 - openssl
 - NPM
+- d2
 
 # Post install
 
@@ -23,7 +24,7 @@
 - solargraph
 - gopls
 - llvm (clangd)
-- tpescript-language-server
+- typescript-language-server
 - lua-language-server
 - oxlint
 - vscode-langservers-extracted

@@ -4,7 +4,7 @@ return {
     ft = { "d2" },
     dependencies = { "ravsii/tree-sitter-d2" },
     init = function()
-      -- Enable/disable auto ASCII render on save (default: 1)
+      -- Disable auto ASCII render on save
       vim.g.d2_ascii_autorender = 0
 
       -- Customize the ASCII render command (default: "d2")
@@ -14,7 +14,8 @@ return {
       vim.g.d2_ascii_preview_width = vim.o.columns / 2
 
       -- Set ASCII mode: "extended" (Unicode) or "standard" (basic ASCII)
-      vim.g.d2_ascii_mode = "standard"
+      -- vim.g.d2_ascii_mode = "standard"
+      vim.g.d2_ascii_mode = "extended"
 
       -- Commands
       -- :D2Preview - Render current buffer as ASCII in preview window
@@ -31,6 +32,10 @@ return {
       -- <Leader>rd2 - Replace selected D2 code with ASCII render (visual mode, any file)
       -- <Leader>yd2 - Copy ASCII preview content to clipboard and yank register (normal mode, any file)
 
+    end,
+    config = function()
+      vim.keymap.set('n', '<leader>d2', vim.fn['d2#ascii#PreviewToggle'], { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>du', vim.fn['d2#ascii#PreviewUpdate'], { noremap = true, silent = true })
     end,
   },
   {
