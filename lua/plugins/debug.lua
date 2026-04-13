@@ -148,8 +148,8 @@ return {
       map('<leader>di', dap.step_into) -- if a line is a function call, setp into it
       map('<leader>do', dap.step_over) -- if a line is a function call, jump to return
       map('<leader>du', dap.step_out)  -- if inside a function, jump to return
-      map('<leader>dr', dap.step_back) -- go back in history, unreliable, not every debugger suports it
-      map('<leader>dR', dap.repl.open)
+      map('<leader>dR', dap.step_back) -- go back in history, unreliable, not every debugger suports it
+      map('<leader>dr', dap.repl.open)
       map('<leader>dl', dap.run_last)
       map('<leader>db', dap.list_breakpoints)
       map('<leader>dq', dap.terminate)
@@ -172,8 +172,9 @@ return {
         else
           cb({
             type = 'executable',
-            command = os.getenv("VIRTUAL_ENV") .. '/bin/python',
-            args = { '-m', 'debugpy.adapter' },
+            -- command = os.getenv("VIRTUAL_ENV") .. '/bin/python',
+            command = os.getenv("HOME") .. '/.local/bin/debugpy-adapter',
+            -- args = { '-m', 'debugpy.adapter' },
             options = {
               source_filetype = 'python',
             },
