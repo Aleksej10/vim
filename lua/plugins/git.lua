@@ -151,7 +151,7 @@ return {
           default = window_view,
         },
         focus_blame = true,
-        merge_consecutive = false,
+        merge_consecutive = true,
         max_summary_width = 30,
         colors = nil,
         blame_options = nil,

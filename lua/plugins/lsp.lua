@@ -110,6 +110,8 @@ return {
         'lua_ls',
         'somesass_ls',
 
+        'kulala_ls',
+
         'oxlint',
         -- 'vscode_js',
         'vscode_css',

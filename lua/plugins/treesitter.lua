@@ -30,6 +30,7 @@ return {
         "gotmpl",
         "haskell",
         "html",
+        "http",
         "hyprlang",
         "javascript",
         "json",

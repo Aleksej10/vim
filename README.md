@@ -30,4 +30,6 @@
 - vscode-langservers-extracted
 - some-sass-language-server
 - ty
+- debugpy
+- kulala-ls
 

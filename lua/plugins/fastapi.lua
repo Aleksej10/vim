@@ -29,10 +29,10 @@ return {
           refresh  = "<leader>Nr", -- refresh route cache
           codelens = "<leader>Nc", -- toggle codelens
 
-          http_run     = "<leader>Ns", -- send request
-          http_replay  = "<leader>NR", -- replay last request
-          http_inspect = "<leader>Ni", -- inspect current request
-          http_env     = "<leader>NE", -- set environment
+          -- http_run     = "<leader>Ns", -- send request
+          -- http_replay  = "<leader>NR", -- replay last request
+          -- http_inspect = "<leader>Ni", -- inspect current request
+          -- http_env     = "<leader>NE", -- set environment
         },
 
         codelens = {
