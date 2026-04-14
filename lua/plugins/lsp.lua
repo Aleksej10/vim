@@ -55,7 +55,17 @@ return {
           map('gO', telescope.lsp_outgoing_calls) -- List what the function is calling
 
 
-          map('<leader>fm', vim.lsp.buf.format) -- Format a buffer using attached LSP
+          -- map('<leader>fm', vim.lsp.buf.format) -- Format a buffer using attached LSP
+          map('<leader>fm', function()
+            local ft = vim.bo.filetype
+            if ft == 'python' then
+              vim.lsp.buf.format({ name = 'ruff' })
+            else
+              vim.lsp.buf.format()
+            end
+          end)
+
+
           map('<leader>fd', telescope.diagnostics) -- Show diagnostics
 
           -- TODO: pass OPTIONS
@@ -91,6 +101,15 @@ return {
         filetypes = { 'ruby' },
       }
 
+      vim.lsp.config['ruff'] = {
+        cmd = { 'ruff', 'server' },
+        filetypes = { 'python' },
+        on_attach = function(client)
+          -- ty owns hover; ruff doesn't provide useful hover anyway
+          client.server_capabilities.hoverProvider = false
+        end,
+      }
+
       vim.lsp.config('*', {
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
         root_markers = { '.git' },
@@ -98,9 +117,11 @@ return {
       })
 
 
+
       local servers = { 
         -- 'basedpyright',
         'ty',
+        'ruff',
         'rust_analyzer', 
         'bundle_solargraph',
         'gopls', 

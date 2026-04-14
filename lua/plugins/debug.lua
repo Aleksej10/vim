@@ -134,8 +134,8 @@ return {
       end
 
       dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-        dapvtext.disable()
+        -- dapui.close()
+        -- dapvtext.disable()
       end
 
       local map = function(key, cmd)

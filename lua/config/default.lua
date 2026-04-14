@@ -9,6 +9,7 @@ g.mapleader = ','
 o.encoding = 'utf-8'
 env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
 o.termguicolors = true
+vim.o.termguicolors = true
 o.viminfo = ''
 
 -- o.cmdheight = 0
@@ -193,5 +194,15 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.shiftwidth = 2
     vim.opt_local.expandtab = true
     vim.opt_local.smarttab = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("OptionSet", {
+  pattern = "background",
+  callback = function()
+    if vim.g.autodark_background then
+      vim.o.background = vim.g.autodark_background
+    end
+    -- vim.notify("background changed to: " .. vim.o.background, vim.log.levels.WARN)
   end,
 })

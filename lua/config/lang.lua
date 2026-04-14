@@ -42,3 +42,5 @@ map_key("E'", "É")
 
 map_key("o`", "ò")
 map_key("O`", "Ò")
+
+vim.keymap.set('i', '<leader>ti', '<C-v><Tab>', { silent = true, desc = "Insert literal tab" })
