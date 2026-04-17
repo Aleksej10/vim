@@ -152,7 +152,7 @@ end
 
 
 mod_map(";", "A;<ESC>")
-mod_map(":", "A:<ESC>")
+mod_map("A-S-;", "A:<ESC>")
 
 -- mod_map("SPACE", "A<SPACE>") -- (command-space) is bound in macos 
 
@@ -189,9 +189,16 @@ vim.filetype.add({
 -- sane tab widths
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
+
   callback = function()
-    vim.opt_local.tabstop = 2
-    vim.opt_local.shiftwidth = 2
+    local space_count = 2
+
+    if vim.bo.filetype == "python" then
+      space_count = 4
+    end
+
+    vim.opt_local.tabstop = space_count
+    vim.opt_local.shiftwidth = space_count
     vim.opt_local.expandtab = true
     vim.opt_local.smarttab = true
   end,
@@ -206,3 +213,10 @@ vim.api.nvim_create_autocmd("OptionSet", {
     -- vim.notify("background changed to: " .. vim.o.background, vim.log.levels.WARN)
   end,
 })
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or "rounded" -- Options: "single", "double", "rounded", "solid", "shadow"
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
