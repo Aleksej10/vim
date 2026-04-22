@@ -70,6 +70,11 @@ o.splitbelow = true
 o.splitright = true
 o.splitkeep = "screen"
 
+
+-- switch C-i C-o -> [C-i PREV, C-i NEXT]
+map("n", "<C-i>", "<C-o>")
+map("n", "<C-o>", "<C-i>")
+
 -- Shortcutting split navigation
 map({ "n", "v" }, "<C-h>", "<C-w>h")
 map({ "n", "v" }, "<C-j>", "<C-w>j")
