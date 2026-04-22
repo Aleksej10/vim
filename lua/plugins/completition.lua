@@ -23,6 +23,31 @@ return {
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
       end
 
+      local border_window = {                                                                                                                                                                                                            
+        completion = {                                                                                                                                                                                             
+          border = "rounded",                                                                                                                                                                                         
+          col_offset = 0,                                                                                                                                                                                          
+          scrollbar = true,                                                                                                                                                                                        
+          scrolloff = 0,                                                                                                                                                                                           
+          side_padding = 1,                                                                                                                                                                                        
+          winblend = 0,                                                                                                                                                                                            
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",                                                                                                                    
+          zindex = 1001                                                                                                                                                                                            
+        },                                                                                                                                                                                                         
+        documentation = {                                                                                                                                                                                          
+          border = "rounded",                                                                                                                                                                                         
+          col_offset = 0,                                                                                                                                                                                          
+          max_height = 33,                                                                                                                                                                                         
+          max_width = 115,                                                                                                                                                                                         
+          scrollbar = true,                                                                                                                                                                                        
+          scrolloff = 0,                                                                                                                                                                                           
+          side_padding = 1,                                                                                                                                                                                        
+          winblend = 0,                                                                                                                                                                                            
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",                                                                                                                    
+          zindex = 1001                                                                                                                                                                                            
+        }                                                                                                                                                                                                          
+      }  
+
       local cmp = require('cmp')
 
       cmp.setup({
@@ -34,8 +59,8 @@ return {
         },
 
         window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          completion = border_window,
+          documentation = border_window,
         },
 
         mapping = cmp.mapping.preset.insert({

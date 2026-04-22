@@ -1,7 +1,10 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "nvim-telescope/telescope.nvim" },
+    dependencies = { 
+      "nvim-telescope/telescope.nvim", 
+      { "artemave/workspace-diagnostics.nvim", lazy = true },
+    },
     init = function()
       local telescope = require('telescope.builtin')
 
@@ -67,12 +70,13 @@ return {
 
 
           map('<leader>fd', telescope.diagnostics) -- Show diagnostics
+          map('<leader>fD', vim.diagnostic.open_float)
 
           -- TODO: pass OPTIONS
           map('g.', vim.lsp.buf.code_action)  -- Open the code actions menu
 
 
-          vim.diagnostic.enable(false)
+          vim.diagnostic.enable(true)
         end
       })
 
@@ -110,13 +114,20 @@ return {
         end,
       }
 
+      vim.lsp.config['ty'] = {
+        cmd = { 'ty', 'server' },
+        filetypes = { 'python' },
+        root_markers = { 'ty.toml', 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', '.git' },
+        on_attach = function(client, bufnr)
+          require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+        end,
+      }
+
       vim.lsp.config('*', {
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
         root_markers = { '.git' },
         -- root_dir = require('lspconfig.util').root_pattern('.git'),
       })
-
-
 
       local servers = { 
         -- 'basedpyright',

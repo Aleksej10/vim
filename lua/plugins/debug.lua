@@ -129,8 +129,8 @@ return {
       end
 
       dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-        dapvtext.disable()
+        -- dapui.close()
+        -- dapvtext.disable()
       end
 
       dap.listeners.before.event_exited.dapui_config = function()
@@ -182,6 +182,23 @@ return {
         end
       end
 
+      local function load_env_file(path)
+        local env = {}
+        local f = io.open(path, 'r')
+        if not f then return env end
+        for line in f:lines() do
+          -- skip comments and blank lines
+          if not line:match('^%s*#') and line:match('%S') then
+            local key, val = line:match('^%s*([%w_]+)%s*=%s*(.-)%s*$')
+            if key then
+              env[key] = val
+            end
+          end
+        end
+        f:close()
+        return env
+      end
+
       dap.configurations.python = {
         {
           -- The first three options are required by nvim-dap
@@ -192,6 +209,11 @@ return {
           -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
 
           program = "${file}"; -- This configuration will launch the current file if used.
+
+          env = function()
+            return load_env_file(vim.fn.getcwd() .. '/.env')
+          end;
+
           pythonPath = function()
             -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
             -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
