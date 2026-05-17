@@ -143,6 +143,7 @@ return {
         'somesass_ls',
 
         'kulala_ls',
+        'svelte',
 
         'oxlint',
         -- 'vscode_js',

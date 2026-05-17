@@ -32,4 +32,4 @@
 - ty
 - debugpy
 - kulala-ls
-
+- svelte-language-server
