@@ -294,7 +294,10 @@ return {
             default_yes = false,
           },
         },
-        experimental = {},
+        experimental = {
+          -- Needs the SessionWritePre event, added later in the 0.13 dev cycle.
+          session_restore_nvim = false,
+        },
         log = {
           enable = false,
           truncate = false,
