@@ -29,7 +29,7 @@ Plugins live in `lua/plugins/`, one file per plugin (or plugin group). lazy.nvim
 
 LSP is configured in `lua/plugins/lsp.lua` using native `vim.lsp.config()` and `vim.lsp.enable()` (Neovim 0.12 style). Custom server configs (vscode-langservers, bundle_solargraph, ruff) are defined inline. All servers get cmp_nvim_lsp capabilities via the wildcard `vim.lsp.config('*', ...)` call.
 
-Active servers: ty, ruff, rust_analyzer, bundle_solargraph, gopls, clangd, ts_ls, lua_ls, somesass_ls, kulala_ls, svelte, oxlint, vscode_css, vscode_html, vscode_json.
+Active servers: ty, ruff, rust_analyzer, bundle_solargraph, gopls, clangd, tsc, lua_ls, somesass_ls, svelte, oxlint, vscode_css, vscode_html, vscode_json.
 
 ## Completion
 

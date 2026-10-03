@@ -5,7 +5,6 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim",
-      "mistweaverco/kulala.nvim",
     },
     init = function()
       local nimble = require('nimbleapi')

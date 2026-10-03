@@ -6,8 +6,6 @@
 - go (for hexokaise)
 - mercurial
 - cURL
-- gPRCurl
-- websocat
 - openssl
 - NPM
 - d2
@@ -31,5 +29,4 @@
 - some-sass-language-server
 - ty
 - debugpy
-- kulala-ls
 - svelte-language-server
