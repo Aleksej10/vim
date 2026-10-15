@@ -15,7 +15,6 @@
   "gv.vim": { "branch": "master", "commit": "ed7e9c6a118d92462c7d709c34a92682b60fa9f7" },
   "indent-blankline.nvim": { "branch": "master", "commit": "f1e186e44d3b7f9ae918008e2c28ce37c6023d2d" },
   "kitty-scrollback.nvim": { "branch": "main", "commit": "4994c85e0f291598d0748488653c83cb698fd281" },
-  "kulala.nvim": { "branch": "main", "commit": "069112264780c72e0b2f30433e6e1690291b02a5" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "lualine.nvim": { "branch": "master", "commit": "221ce6b2d999187044529f49da6554a92f740a96" },
   "nimbleapi.nvim": { "branch": "main", "commit": "efdaecd1a948b2c44428d99625a9e3f3f1332a01" },

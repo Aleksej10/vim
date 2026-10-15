@@ -80,23 +80,33 @@ return {
         end
       })
 
+      -- npm-based servers run on bun, so node does not need to be installed.
+      -- bunx uses the project's node_modules/.bin first, then the global bun packages.
+      local function bunx(...)
+        return { 'bunx', '--bun', ... }
+      end
+
+      vim.lsp.config('somesass_ls', { cmd = bunx('some-sass-language-server', '--stdio') })
+      vim.lsp.config('svelte', { cmd = bunx('svelteserver', '--stdio') })
+      vim.lsp.config('oxlint', { cmd = bunx('oxlint', '--lsp') })
+
       vim.lsp.config['vscode_css'] = {
-        cmd = { 'vscode-css-language-server', '--stdio' },
+        cmd = bunx('vscode-css-language-server', '--stdio'),
         filetypes = { 'css', 'scss', 'sass' },
       }
 
       vim.lsp.config['vscode_html'] = {
-        cmd = { 'vscode-html-language-server', '--stdio' },
+        cmd = bunx('vscode-html-language-server', '--stdio'),
         filetypes = { 'html' },
       }
 
       vim.lsp.config['vscode_js'] = {
-        cmd = { 'vscode-eslint-language-server', '--stdio' },
+        cmd = bunx('vscode-eslint-language-server', '--stdio'),
         filetypes = { 'javascript' },
       }
 
       vim.lsp.config['vscode_json'] = {
-        cmd = { 'vscode-json-language-server', '--stdio' },
+        cmd = bunx('vscode-json-language-server', '--stdio'),
         filetypes = { 'json' },
       }
 
@@ -138,11 +148,10 @@ return {
         'gopls', 
         'clangd',
 
-        'ts_ls', 
+        'tsc', -- native TypeScript 7 server (tsc --lsp), no JS runtime needed
         'lua_ls',
         'somesass_ls',
 
-        'kulala_ls',
         'svelte',
 
         'oxlint',
