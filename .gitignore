@@ -1,3 +1,4 @@
 bin/
 lazy/
 treesitter/
+lazy-lock.json
